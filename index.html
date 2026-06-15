@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Color Analysis: Find Your Personal Palette | HueKind</title>
+    <meta name="description" content="Free AI color analysis from one selfie. Discover your seasonal color palette, skin tone, best clothing colors, makeup shades, and colors to avoid." />
+    <meta name="keywords" content="AI color analysis, skin tone chart, skin tones, soft winter color palette, deep summer color palette, neutral skin tone" />
+    <link rel="canonical" href="https://huekind.com/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content="HueKind AI Color Analysis" />
+    <meta property="og:description" content="Meet the colors that make you look unmistakably you." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/color-analysis-portrait.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "HueKind AI Color Analysis",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Web",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "description": "AI-powered seasonal color analysis and personal color palette generator."
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="HueKind home">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        HueKind
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#how-it-works">How it works</a>
+        <a href="#palette">Palettes</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="button button-small button-dark" href="#analyze">Find my colors</a>
+      <button class="menu-button" aria-label="Open menu" aria-expanded="false">Menu</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> Personal color, made personal</div>
+          <h1>Meet the colors that make you look <em>unmistakably you.</em></h1>
+          <p class="hero-intro">Our AI color analysis reads your natural undertone, contrast, and depth to reveal the shades that brighten your face and simplify every choice.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#analyze">Take the color quiz <span>→</span></a>
+            <span class="micro-copy"><strong>Free to try</strong><br />About 2 minutes</span>
+          </div>
+          <div class="trust-row">
+            <div class="avatar-stack"><span>AR</span><span>MK</span><span>JL</span></div>
+            <div><b>4.9 <span class="stars">★★★★★</span></b><small>Loved by 18,000+ color seekers</small></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="portrait-frame">
+            <img src="/assets/color-analysis-portrait.png" alt="Woman surrounded by harmonious personal color swatches" />
+            <div class="result-float">
+              <span>Your season</span>
+              <strong>Soft Autumn</strong>
+              <div class="mini-swatches"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <span class="scribble scribble-one">warm + soft</span>
+          <span class="scribble scribble-two">you, in color</span>
+        </div>
+      </section>
+
+      <section class="marquee" aria-label="Features">
+        <div>12 seasonal palettes <span>✦</span> 90-second analysis <span>✦</span> Personalized skin tone chart <span>✦</span> Makeup & wardrobe colors <span>✦</span> Private by design <span>✦</span></div>
+      </section>
+
+      <section class="analysis-section" id="analyze">
+        <div class="section-heading centered">
+          <div class="eyebrow"><span></span> Your color story starts here</div>
+          <h2>A few thoughtful questions.<br />Your <em>personal palette.</em></h2>
+          <p>We combine your answers with an optional selfie to identify your most likely color season.</p>
+        </div>
+        <div class="quiz-shell" id="quizShell">
+          <div class="quiz-topbar">
+            <button class="quiz-back" id="quizBack" type="button" aria-label="Previous question">←</button>
+            <div class="quiz-progress"><i id="quizProgress"></i></div>
+            <span id="quizCounter">1 / 10</span>
+          </div>
+          <div class="quiz-stage" id="quizStage"></div>
+          <div class="quiz-actions" id="quizActions">
+            <button class="button button-primary quiz-continue" id="quizContinue" type="button" disabled>Continue <span>→</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="result-section" id="resultSection" hidden>
+        <div class="result-header">
+          <div>
+            <div class="eyebrow light"><span></span> Your personal color analysis</div>
+            <h2>You are a <em>Soft Autumn.</em></h2>
+            <p>Warm, gently muted, and beautifully grounded. Your best colors echo the soft richness of an early autumn landscape.</p>
+          </div>
+          <button class="button button-light" id="downloadReport">Download report ↓</button>
+        </div>
+        <div class="result-grid">
+          <article class="result-card tone-card">
+            <span class="card-label">Your skin tone chart</span>
+            <div class="face-orbit">
+              <img id="resultPhoto" src="/assets/color-analysis-portrait.png" alt="Analyzed portrait" />
+              <i style="--c:#d89b79;--x:8%;--y:14%"></i><i style="--c:#8e6551;--x:85%;--y:22%"></i><i style="--c:#e7bb99;--x:2%;--y:72%"></i><i style="--c:#5f3b2f;--x:88%;--y:76%"></i>
+            </div>
+            <dl><div><dt>Undertone</dt><dd>Warm neutral</dd></div><div><dt>Contrast</dt><dd>Low–medium</dd></div><div><dt>Depth</dt><dd>Medium</dd></div></dl>
+          </article>
+          <article class="result-card palette-card" id="palette">
+            <span class="card-label">Your signature palette</span>
+            <div class="large-swatches">
+              <span style="--sw:#9b4e4b">Brick rose</span><span style="--sw:#cc765b">Terracotta</span><span style="--sw:#dba976">Camel</span><span style="--sw:#748264">Sage</span><span style="--sw:#426d6a">Deep teal</span><span style="--sw:#72515f">Aubergine</span>
+            </div>
+            <p>Choose blended, earthy shades over anything icy or neon. These colors harmonize with your natural coloring instead of wearing you.</p>
+          </article>
+          <article class="result-card avoid-card">
+            <span class="card-label">Your easy swaps</span>
+            <div class="swap"><span style="--sw:#111827"></span><b>Pure black</b><i>→</i><span style="--sw:#3e3433"></span><b>Espresso</b></div>
+            <div class="swap"><span style="--sw:#f7f7f2"></span><b>Optic white</b><i>→</i><span style="--sw:#e8d8bd"></span><b>Warm ivory</b></div>
+            <div class="swap"><span style="--sw:#ff38bc"></span><b>Hot pink</b><i>→</i><span style="--sw:#a85c66"></span><b>Dusty rose</b></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="steps-section" id="how-it-works">
+        <div class="section-heading">
+          <div class="eyebrow"><span></span> The science, made simple</div>
+          <h2>How AI color analysis<br /><em>finds your season.</em></h2>
+        </div>
+        <div class="steps">
+          <article><span class="step-number">01</span><div class="step-icon">◎</div><h3>We read your coloring</h3><p>Our model maps your skin undertone, eye and hair depth, and natural facial contrast.</p></article>
+          <article><span class="step-number">02</span><div class="step-icon">◐</div><h3>We match your season</h3><p>Your traits are compared across the 12-season system, from Soft Summer to Deep Winter.</p></article>
+          <article><span class="step-number">03</span><div class="step-icon">✺</div><h3>You get your palette</h3><p>See wearable colors for clothing, makeup, hair, jewelry, and the shades worth skipping.</p></article>
+        </div>
+      </section>
+
+      <section class="education-section">
+        <div class="education-photo">
+          <img src="/assets/color-analysis-portrait.png" alt="Editorial portrait demonstrating warm neutral skin tone" />
+          <div class="photo-caption">Color theory,<br />but make it yours.</div>
+        </div>
+        <div class="education-copy">
+          <div class="eyebrow"><span></span> Beyond warm vs. cool</div>
+          <h2>Your skin tone is only<br /><em>the beginning.</em></h2>
+          <p>A useful personal palette considers more than undertone. HueKind reads three dimensions that determine whether a color brings you forward or leaves you looking washed out.</p>
+          <div class="dimension"><b>Temperature</b><span>Warm</span><div class="meter"><i style="width:68%"></i></div><span>Cool</span></div>
+          <div class="dimension"><b>Depth</b><span>Light</span><div class="meter"><i style="width:54%"></i></div><span>Deep</span></div>
+          <div class="dimension"><b>Chroma</b><span>Soft</span><div class="meter"><i style="width:38%"></i></div><span>Bright</span></div>
+          <a href="#analyze" class="text-link">Discover your dimensions <span>→</span></a>
+        </div>
+      </section>
+
+      <section class="palette-library">
+        <div class="section-heading centered">
+          <div class="eyebrow"><span></span> There is a palette for everyone</div>
+          <h2>Explore the <em>12 color seasons.</em></h2>
+          <p>Each season has its own balance of temperature, depth, and brightness.</p>
+        </div>
+        <div class="season-tabs" role="tablist">
+          <button class="active" data-season="spring">Spring</button><button data-season="summer">Summer</button><button data-season="autumn">Autumn</button><button data-season="winter">Winter</button>
+        </div>
+        <div class="season-display">
+          <div class="season-orb" id="seasonOrb"><span>Warm<br />Spring</span></div>
+          <div class="season-details">
+            <span class="card-label" id="seasonLabel">Warm spring color palette</span>
+            <h3 id="seasonTitle">Fresh, clear & sun-warmed</h3>
+            <p id="seasonDescription">Golden undertones come alive in clear coral, leaf green, warm aqua, and sunlit neutrals.</p>
+            <div class="season-swatches" id="seasonSwatches"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reviews-section" id="reviews">
+        <div class="section-heading">
+          <div class="eyebrow light"><span></span> Real closets, real clarity</div>
+          <h2>The “oh, that’s why”<br /><em>moment—in their words.</em></h2>
+        </div>
+        <div class="reviews">
+          <blockquote><div class="stars">★★★★★</div><p>“I always thought I was a Winter, but the deep summer color palette finally explained why softer navy looks better than black. My closet makes sense now.”</p><footer><span>JM</span><b>Jamie M.</b><small>Deep Summer</small></footer></blockquote>
+          <blockquote><div class="stars">★★★★★</div><p>“The skin tone chart was more nuanced than any quiz I have tried. I took the palette shopping and stopped buying colors I never wear.”</p><footer><span>AK</span><b>Avery K.</b><small>Soft Autumn</small></footer></blockquote>
+          <blockquote><div class="stars">★★★★★</div><p>“Quick, thoughtful, and genuinely useful. Even the makeup suggestions were shades I already know make me look awake.”</p><footer><span>TS</span><b>Taylor S.</b><small>Bright Spring</small></footer></blockquote>
+        </div>
+      </section>
+
+      <section class="faq-section" id="faq">
+        <div class="section-heading">
+          <div class="eyebrow"><span></span> Good questions, clear answers</div>
+          <h2>Everything you might<br /><em>be wondering.</em></h2>
+        </div>
+        <div class="faq-list">
+          <details><summary>What is AI color analysis?<span>+</span></summary><p>AI color analysis examines visible color relationships in a photo, including undertone, value, chroma, and contrast. It then maps those traits to a seasonal palette with practical color recommendations.</p></details>
+          <details><summary>How accurate is a personal color analysis from a photo?<span>+</span></summary><p>Accuracy depends heavily on the photo. Natural daylight, no filters, minimal makeup, and a visible face give the best result. Screen calibration and artificial light can shift perceived skin tones.</p></details>
+          <details><summary>Can I have a neutral skin tone?<span>+</span></summary><p>Yes. A neutral skin tone sits between warm and cool, and may lean slightly in either direction. Depth, contrast, and chroma then help identify the most flattering season.</p></details>
+          <details><summary>What is the difference between Soft Winter and Deep Summer?<span>+</span></summary><p>Both favor some depth and coolness, but Deep Summer is more muted and blended. A soft winter color palette tends to hold slightly clearer contrast and darker jewel tones.</p></details>
+          <details><summary>What happens to my uploaded photo?<span>+</span></summary><p>This demo processes your image locally in the browser for preview. In a production setup, photos should be encrypted, analyzed transiently, and deleted automatically after processing.</p></details>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div>
+          <div class="eyebrow light"><span></span> Ready when you are</div>
+          <h2>Your best colors have been<br />there all along. <em>Let’s find them.</em></h2>
+          <a class="button button-light" href="#analyze">Start my free analysis <span>→</span></a>
+        </div>
+        <div class="cta-fan"><i></i><i></i><i></i><i></i><i></i></div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand brand-light" href="#"><span class="brand-mark"><i></i><i></i><i></i></span>HueKind</a>
+      <p>Color clarity for real life.</p>
+      <div class="footer-links"><a href="#how-it-works">How it works</a><a href="#palette">Palettes</a><a href="#faq">FAQ</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
+      <small>© 2026 HueKind. Made for every shade of you.</small>
+    </footer>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
