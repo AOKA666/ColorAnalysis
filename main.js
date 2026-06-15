@@ -1,4 +1,4 @@
-import "./styles.css";
+import { featuredArticles } from "./blog/articles.js";
 
 const $ = (selector) => document.querySelector(selector);
 const stage = $("#quizStage");
@@ -13,6 +13,23 @@ let step = 0;
 let selectedValue = null;
 let photoUrl = "";
 const answers = {};
+
+function renderFeaturedArticles() {
+  const grid = $("#featuredBlogGrid");
+  if (!grid) return;
+  grid.innerHTML = featuredArticles.map((article) => `
+    <article class="home-blog-card">
+      <a class="home-blog-image" href="/blog/${article.slug}/">
+        <img src="${article.image}" alt="${article.alt}" loading="lazy">
+      </a>
+      <div>
+        <span>${article.category} · ${article.readTime}</span>
+        <h3><a href="/blog/${article.slug}/">${article.title}</a></h3>
+        <p>${article.excerpt}</p>
+        <a class="text-link" href="/blog/${article.slug}/">Read article <span>→</span></a>
+      </div>
+    </article>`).join("");
+}
 
 const questions = [
   {
@@ -414,3 +431,4 @@ document.querySelectorAll(".faq-list details").forEach((detail) => detail.addEve
 
 renderQuestion();
 renderSeason("spring");
+renderFeaturedArticles();
