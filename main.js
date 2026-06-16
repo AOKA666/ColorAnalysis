@@ -13,6 +13,13 @@ let step = 0;
 let selectedValue = null;
 let photoUrl = "";
 const answers = {};
+const quizPhotoSprites = {
+  eyes: "/assets/quiz/quiz-eyes.png",
+  hair: "/assets/quiz/quiz-hair.png",
+  skin: "/assets/quiz/quiz-skin-depth.png",
+  white: "/assets/quiz/quiz-white-drape.png",
+  outfits: "/assets/quiz/quiz-outfits.png"
+};
 
 function renderFeaturedArticles() {
   const grid = $("#featuredBlogGrid");
@@ -47,14 +54,14 @@ const questions = [
     key: "eyes",
     title: "What color are your eyes?",
     help: "Choose the closest match. This helps us understand your natural depth and contrast.",
-    layout: "swatches",
+    layout: "eyes",
     options: [
-      ["Blue / Gray", "cool-light", "#7894a1"],
-      ["Green", "warm-light", "#718066"],
-      ["Hazel", "warm-medium", "#8b6942"],
-      ["Light brown", "warm-medium", "#916c4d"],
-      ["Dark brown", "deep", "#432e25"],
-      ["Nearly black", "deep", "#211d1b"]
+      ["Blue / Gray", "cool-light", photoVisual(quizPhotoSprites.eyes, "300% 200%", "0%", "0%")],
+      ["Green", "warm-light", photoVisual(quizPhotoSprites.eyes, "300% 200%", "50%", "0%")],
+      ["Hazel", "warm-medium", photoVisual(quizPhotoSprites.eyes, "300% 200%", "100%", "0%")],
+      ["Light brown", "warm-medium", photoVisual(quizPhotoSprites.eyes, "300% 200%", "0%", "100%")],
+      ["Dark brown", "deep", photoVisual(quizPhotoSprites.eyes, "300% 200%", "50%", "100%")],
+      ["Nearly black", "deep", photoVisual(quizPhotoSprites.eyes, "300% 200%", "100%", "100%")]
     ]
   },
   {
@@ -71,16 +78,16 @@ const questions = [
     key: "hair",
     title: "What is your natural, undyed hair color?",
     help: "Choose the shade closest to your roots.",
-    layout: "swatches",
+    layout: "hair",
     options: [
-      ["Black", "deep-cool", "#181616"],
-      ["Dark brown", "deep", "#3a2924"],
-      ["Medium brown", "medium-warm", "#76503a"],
-      ["Light brown", "medium-warm", "#a77b58"],
-      ["Red / Auburn", "warm", "#9c4428"],
-      ["Dark blonde", "medium-soft", "#a68b68"],
-      ["Blonde", "light-warm", "#d2b585"],
-      ["Light blonde", "light", "#e6d4ad"]
+      ["Black", "deep-cool", photoVisual(quizPhotoSprites.hair, "400% 200%", "0%", "0%")],
+      ["Dark brown", "deep", photoVisual(quizPhotoSprites.hair, "400% 200%", "33.333%", "0%")],
+      ["Medium brown", "medium-warm", photoVisual(quizPhotoSprites.hair, "400% 200%", "66.667%", "0%")],
+      ["Light brown", "medium-warm", photoVisual(quizPhotoSprites.hair, "400% 200%", "100%", "0%")],
+      ["Red / Auburn", "warm", photoVisual(quizPhotoSprites.hair, "400% 200%", "0%", "100%")],
+      ["Dark blonde", "medium-soft", photoVisual(quizPhotoSprites.hair, "400% 200%", "33.333%", "100%")],
+      ["Blonde", "light-warm", photoVisual(quizPhotoSprites.hair, "400% 200%", "66.667%", "100%")],
+      ["Light blonde", "light", photoVisual(quizPhotoSprites.hair, "400% 200%", "100%", "100%")]
     ]
   },
   {
@@ -98,24 +105,24 @@ const questions = [
     key: "skin",
     title: "Which range best matches your natural skin depth?",
     help: "This is about depth, not ethnicity or undertone.",
-    layout: "skin",
+    layout: "skin-depth",
     options: [
-      ["Fair", "light", "#f5d5c1"],
-      ["Light", "light", "#e8b58f"],
-      ["Medium", "medium", "#bd7950"],
-      ["Deep", "deep", "#75452f"]
+      ["Fair", "light", photoVisual(quizPhotoSprites.skin, "200% 200%", "0%", "0%")],
+      ["Light", "light", photoVisual(quizPhotoSprites.skin, "200% 200%", "100%", "0%")],
+      ["Medium", "medium", photoVisual(quizPhotoSprites.skin, "200% 200%", "0%", "100%")],
+      ["Deep", "deep", photoVisual(quizPhotoSprites.skin, "200% 200%", "100%", "100%")]
     ]
   },
   {
     key: "white",
     title: "Which white makes you look fresher and more vibrant?",
     help: "Imagine each shade held near your face in natural daylight.",
-    layout: "large-swatches",
+    layout: "white-drape",
     options: [
-      ["Crisp cool white", "cool", "#ffffff"],
-      ["Warm ivory", "warm", "#eee1c9"],
-      ["Both work well", "neutral", "linear-gradient(135deg,#fff 50%,#eee1c9 50%)"],
-      ["I am not sure", "neutral", "#d7d5d1"]
+      ["Crisp cool white", "cool", photoVisual(quizPhotoSprites.white, "200% 200%", "0%", "0%")],
+      ["Warm ivory", "warm", photoVisual(quizPhotoSprites.white, "200% 200%", "100%", "0%")],
+      ["Both work well", "neutral", photoVisual(quizPhotoSprites.white, "200% 200%", "0%", "100%")],
+      ["I am not sure", "neutral", photoVisual(quizPhotoSprites.white, "200% 200%", "100%", "100%")]
     ]
   },
   {
@@ -134,14 +141,14 @@ const questions = [
     key: "best",
     title: "Friends say “you are glowing” when you wear...",
     help: "Choose the color that most reliably brings your face to life.",
-    layout: "large-swatches",
+    layout: "outfits",
     options: [
-      ["Soft blush", "soft-cool", "#eac5c8"],
-      ["Navy", "deep-cool", "#142b50"],
-      ["Warm caramel", "warm", "#bd7037"],
-      ["Olive green", "soft-warm", "#73863b"],
-      ["Bold red", "clear", "#d9282f"],
-      ["Light peach", "light-warm", "#f2aa87"]
+      ["Soft blush", "soft-cool", photoVisual(quizPhotoSprites.outfits, "300% 200%", "0%", "0%")],
+      ["Navy", "deep-cool", photoVisual(quizPhotoSprites.outfits, "300% 200%", "50%", "0%")],
+      ["Warm caramel", "warm", photoVisual(quizPhotoSprites.outfits, "300% 200%", "100%", "0%")],
+      ["Olive green", "soft-warm", photoVisual(quizPhotoSprites.outfits, "300% 200%", "0%", "100%")],
+      ["Bold red", "clear", photoVisual(quizPhotoSprites.outfits, "300% 200%", "50%", "100%")],
+      ["Light peach", "light-warm", photoVisual(quizPhotoSprites.outfits, "300% 200%", "100%", "100%")]
     ]
   },
   {
@@ -159,12 +166,33 @@ function optionMarkup(option, index, layout) {
       <span class="palette-dots">${visual.map((color) => `<i style="--choice:${color}"></i>`).join("")}</span><b>${label}</b>
     </button>`;
   }
+  if (["eyes", "hair", "skin-depth", "white-drape", "outfits"].includes(layout)) {
+    return `<button class="quiz-option visual-option image-option ${layout}" type="button" data-value="${value}" data-index="${index}">
+      ${realisticVisualMarkup(visual)}<b>${label}</b>
+    </button>`;
+  }
   if (["swatches", "skin", "large-swatches"].includes(layout)) {
     return `<button class="quiz-option visual-option ${layout}" type="button" data-value="${value}" data-index="${index}">
       <i style="--choice:${visual}"></i><b>${label}</b>
     </button>`;
   }
   return `<button class="quiz-option" type="button" data-value="${value}" data-index="${index}"><b>${label}</b><span>✓</span></button>`;
+}
+
+function styleVars(visual) {
+  return Object.entries(visual)
+    .filter(([key]) => key !== "type")
+    .map(([key, value]) => `--${key}:${value}`)
+    .join(";");
+}
+
+function photoVisual(src, size, x, y) {
+  return { type: "photo", sprite: `url("${src}")`, size, x, y };
+}
+
+function realisticVisualMarkup(visual) {
+  const vars = styleVars(visual);
+  return `<span class="quiz-art photo-art" style="${vars}"></span>`;
 }
 
 function renderQuestion() {
