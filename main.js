@@ -14,12 +14,16 @@ let selectedValue = null;
 let photoUrl = "";
 const answers = {};
 const quizPhotoSprites = {
-  eyes: "/assets/quiz/quiz-eyes.png",
-  hair: "/assets/quiz/quiz-hair.png",
-  skin: "/assets/quiz/quiz-skin-depth.png",
-  white: "/assets/quiz/quiz-white-drape.png",
-  outfits: "/assets/quiz/quiz-outfits.png"
+  eyes: assetPath("assets/quiz/quiz-eyes.png"),
+  hair: assetPath("assets/quiz/quiz-hair.png"),
+  skin: assetPath("assets/quiz/quiz-skin-depth.png"),
+  white: assetPath("assets/quiz/quiz-white-drape.png"),
+  outfits: assetPath("assets/quiz/quiz-outfits.png")
 };
+
+function assetPath(path) {
+  return new URL(path, document.baseURI).href;
+}
 
 function renderFeaturedArticles() {
   const grid = $("#featuredBlogGrid");
@@ -56,12 +60,12 @@ const questions = [
     help: "Choose the closest match. This helps us understand your natural depth and contrast.",
     layout: "eyes",
     options: [
-      ["Blue / Gray", "cool-light", photoVisual(quizPhotoSprites.eyes, "300% 200%", "0%", "0%")],
-      ["Green", "warm-light", photoVisual(quizPhotoSprites.eyes, "300% 200%", "50%", "0%")],
-      ["Hazel", "warm-medium", photoVisual(quizPhotoSprites.eyes, "300% 200%", "100%", "0%")],
-      ["Light brown", "warm-medium", photoVisual(quizPhotoSprites.eyes, "300% 200%", "0%", "100%")],
-      ["Dark brown", "deep", photoVisual(quizPhotoSprites.eyes, "300% 200%", "50%", "100%")],
-      ["Nearly black", "deep", photoVisual(quizPhotoSprites.eyes, "300% 200%", "100%", "100%")]
+      ["Blue / Gray", "cool-light", photoVisual(quizPhotoSprites.eyes, 3, 2, 0, 0)],
+      ["Green", "warm-light", photoVisual(quizPhotoSprites.eyes, 3, 2, 1, 0)],
+      ["Hazel", "warm-medium", photoVisual(quizPhotoSprites.eyes, 3, 2, 2, 0)],
+      ["Light brown", "warm-medium", photoVisual(quizPhotoSprites.eyes, 3, 2, 0, 1)],
+      ["Dark brown", "deep", photoVisual(quizPhotoSprites.eyes, 3, 2, 1, 1)],
+      ["Nearly black", "deep", photoVisual(quizPhotoSprites.eyes, 3, 2, 2, 1)]
     ]
   },
   {
@@ -80,14 +84,14 @@ const questions = [
     help: "Choose the shade closest to your roots.",
     layout: "hair",
     options: [
-      ["Black", "deep-cool", photoVisual(quizPhotoSprites.hair, "400% 200%", "0%", "0%")],
-      ["Dark brown", "deep", photoVisual(quizPhotoSprites.hair, "400% 200%", "33.333%", "0%")],
-      ["Medium brown", "medium-warm", photoVisual(quizPhotoSprites.hair, "400% 200%", "66.667%", "0%")],
-      ["Light brown", "medium-warm", photoVisual(quizPhotoSprites.hair, "400% 200%", "100%", "0%")],
-      ["Red / Auburn", "warm", photoVisual(quizPhotoSprites.hair, "400% 200%", "0%", "100%")],
-      ["Dark blonde", "medium-soft", photoVisual(quizPhotoSprites.hair, "400% 200%", "33.333%", "100%")],
-      ["Blonde", "light-warm", photoVisual(quizPhotoSprites.hair, "400% 200%", "66.667%", "100%")],
-      ["Light blonde", "light", photoVisual(quizPhotoSprites.hair, "400% 200%", "100%", "100%")]
+      ["Black", "deep-cool", photoVisual(quizPhotoSprites.hair, 4, 2, 0, 0)],
+      ["Dark brown", "deep", photoVisual(quizPhotoSprites.hair, 4, 2, 1, 0)],
+      ["Medium brown", "medium-warm", photoVisual(quizPhotoSprites.hair, 4, 2, 2, 0)],
+      ["Light brown", "medium-warm", photoVisual(quizPhotoSprites.hair, 4, 2, 3, 0)],
+      ["Red / Auburn", "warm", photoVisual(quizPhotoSprites.hair, 4, 2, 0, 1)],
+      ["Dark blonde", "medium-soft", photoVisual(quizPhotoSprites.hair, 4, 2, 1, 1)],
+      ["Blonde", "light-warm", photoVisual(quizPhotoSprites.hair, 4, 2, 2, 1)],
+      ["Light blonde", "light", photoVisual(quizPhotoSprites.hair, 4, 2, 3, 1)]
     ]
   },
   {
@@ -107,10 +111,10 @@ const questions = [
     help: "This is about depth, not ethnicity or undertone.",
     layout: "skin-depth",
     options: [
-      ["Fair", "light", photoVisual(quizPhotoSprites.skin, "200% 200%", "0%", "0%")],
-      ["Light", "light", photoVisual(quizPhotoSprites.skin, "200% 200%", "100%", "0%")],
-      ["Medium", "medium", photoVisual(quizPhotoSprites.skin, "200% 200%", "0%", "100%")],
-      ["Deep", "deep", photoVisual(quizPhotoSprites.skin, "200% 200%", "100%", "100%")]
+      ["Fair", "light", photoVisual(quizPhotoSprites.skin, 2, 2, 0, 0)],
+      ["Light", "light", photoVisual(quizPhotoSprites.skin, 2, 2, 1, 0)],
+      ["Medium", "medium", photoVisual(quizPhotoSprites.skin, 2, 2, 0, 1)],
+      ["Deep", "deep", photoVisual(quizPhotoSprites.skin, 2, 2, 1, 1)]
     ]
   },
   {
@@ -119,10 +123,10 @@ const questions = [
     help: "Imagine each shade held near your face in natural daylight.",
     layout: "white-drape",
     options: [
-      ["Crisp cool white", "cool", photoVisual(quizPhotoSprites.white, "200% 200%", "0%", "0%")],
-      ["Warm ivory", "warm", photoVisual(quizPhotoSprites.white, "200% 200%", "100%", "0%")],
-      ["Both work well", "neutral", photoVisual(quizPhotoSprites.white, "200% 200%", "0%", "100%")],
-      ["I am not sure", "neutral", photoVisual(quizPhotoSprites.white, "200% 200%", "100%", "100%")]
+      ["Crisp cool white", "cool", photoVisual(quizPhotoSprites.white, 2, 2, 0, 0)],
+      ["Warm ivory", "warm", photoVisual(quizPhotoSprites.white, 2, 2, 1, 0)],
+      ["Both work well", "neutral", photoVisual(quizPhotoSprites.white, 2, 2, 0, 1)],
+      ["I am not sure", "neutral", photoVisual(quizPhotoSprites.white, 2, 2, 1, 1)]
     ]
   },
   {
@@ -143,12 +147,12 @@ const questions = [
     help: "Choose the color that most reliably brings your face to life.",
     layout: "outfits",
     options: [
-      ["Soft blush", "soft-cool", photoVisual(quizPhotoSprites.outfits, "300% 200%", "0%", "0%")],
-      ["Navy", "deep-cool", photoVisual(quizPhotoSprites.outfits, "300% 200%", "50%", "0%")],
-      ["Warm caramel", "warm", photoVisual(quizPhotoSprites.outfits, "300% 200%", "100%", "0%")],
-      ["Olive green", "soft-warm", photoVisual(quizPhotoSprites.outfits, "300% 200%", "0%", "100%")],
-      ["Bold red", "clear", photoVisual(quizPhotoSprites.outfits, "300% 200%", "50%", "100%")],
-      ["Light peach", "light-warm", photoVisual(quizPhotoSprites.outfits, "300% 200%", "100%", "100%")]
+      ["Soft blush", "soft-cool", photoVisual(quizPhotoSprites.outfits, 3, 2, 0, 0)],
+      ["Navy", "deep-cool", photoVisual(quizPhotoSprites.outfits, 3, 2, 1, 0)],
+      ["Warm caramel", "warm", photoVisual(quizPhotoSprites.outfits, 3, 2, 2, 0)],
+      ["Olive green", "soft-warm", photoVisual(quizPhotoSprites.outfits, 3, 2, 0, 1)],
+      ["Bold red", "clear", photoVisual(quizPhotoSprites.outfits, 3, 2, 1, 1)],
+      ["Light peach", "light-warm", photoVisual(quizPhotoSprites.outfits, 3, 2, 2, 1)]
     ]
   },
   {
@@ -181,18 +185,27 @@ function optionMarkup(option, index, layout) {
 
 function styleVars(visual) {
   return Object.entries(visual)
-    .filter(([key]) => key !== "type")
+    .filter(([key]) => !["type", "src"].includes(key))
     .map(([key, value]) => `--${key}:${value}`)
     .join(";");
 }
 
-function photoVisual(src, size, x, y) {
-  return { type: "photo", sprite: `url("${src}")`, size, x, y };
+function photoVisual(src, cols, rows, col, row) {
+  return {
+    type: "photo",
+    src,
+    w: `${cols * 100}%`,
+    h: `${rows * 100}%`,
+    x: `${col * -100}%`,
+    y: `${row * -100}%`
+  };
 }
 
 function realisticVisualMarkup(visual) {
   const vars = styleVars(visual);
-  return `<span class="quiz-art photo-art" style="${vars}"></span>`;
+  return `<span class="quiz-art photo-art" style="${vars}">
+    <img class="photo-sprite" src="${visual.src}" alt="" loading="lazy" decoding="async">
+  </span>`;
 }
 
 function renderQuestion() {

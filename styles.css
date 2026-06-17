@@ -135,7 +135,8 @@ h1 em, h2 em { color: var(--coral); font-weight: inherit; }
 .image-option { min-height: 188px; padding: 12px; }
 .image-option > b { margin-top: auto; }
 .quiz-art { height: 126px; position: relative; display: block; overflow: hidden; border-radius: 12px; border: 1px solid rgba(33,29,27,.08); background: linear-gradient(145deg,#fff8ef,#ded4ca); }
-.photo-art { background-image: var(--sprite); background-size: var(--size); background-position: var(--x) var(--y); background-repeat: no-repeat; box-shadow: inset 0 -30px 42px rgba(33,29,27,.08); }
+.photo-art { background: #e7dfd6; box-shadow: inset 0 -30px 42px rgba(33,29,27,.08); }
+.photo-sprite { position: absolute; top: var(--y); left: var(--x); width: var(--w); height: var(--h); max-width: none; object-fit: fill; }
 .visual-option.large-swatches { min-height: 180px; }
 .visual-option.large-swatches > i { height: 125px; }
 .visual-option.skin { min-height: 190px; }
