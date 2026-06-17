@@ -41,7 +41,7 @@
         <a href="#reviews">Reviews</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="button button-small button-dark" href="#analyze">Find my colors</a>
+      <a class="button button-small button-dark" href="/quiz/">Find my colors</a>
       <button class="menu-button" aria-label="Open menu" aria-expanded="false">Menu</button>
     </header>
 
@@ -52,7 +52,7 @@
           <h1>Meet the colors that make you look <em>unmistakably you.</em></h1>
           <p class="hero-intro">Our AI color analysis reads your natural undertone, contrast, and depth to reveal the shades that brighten your face and simplify every choice.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#analyze">Take the color quiz <span>→</span></a>
+            <a class="button button-primary" href="/quiz/">Take the color quiz <span>→</span></a>
             <span class="micro-copy"><strong>Free to try</strong><br />About 2 minutes</span>
           </div>
           <div class="trust-row">
@@ -76,59 +76,6 @@
 
       <section class="marquee" aria-label="Features">
         <div>12 seasonal palettes <span>✦</span> 90-second analysis <span>✦</span> Personalized skin tone chart <span>✦</span> Makeup & wardrobe colors <span>✦</span> Private by design <span>✦</span></div>
-      </section>
-
-      <section class="analysis-section" id="analyze">
-        <div class="section-heading centered">
-          <div class="eyebrow"><span></span> Your color story starts here</div>
-          <h2>A few thoughtful questions.<br />Your <em>personal palette.</em></h2>
-          <p>We combine your answers with an optional selfie to identify your most likely color season.</p>
-        </div>
-        <div class="quiz-shell" id="quizShell">
-          <div class="quiz-topbar">
-            <button class="quiz-back" id="quizBack" type="button" aria-label="Previous question">←</button>
-            <div class="quiz-progress"><i id="quizProgress"></i></div>
-            <span id="quizCounter">1 / 10</span>
-          </div>
-          <div class="quiz-stage" id="quizStage"></div>
-          <div class="quiz-actions" id="quizActions">
-            <button class="button button-primary quiz-continue" id="quizContinue" type="button" disabled>Continue <span>→</span></button>
-          </div>
-        </div>
-      </section>
-
-      <section class="result-section" id="resultSection" hidden>
-        <div class="result-header">
-          <div>
-            <div class="eyebrow light"><span></span> Your personal color analysis</div>
-            <h2>You are a <em>Soft Autumn.</em></h2>
-            <p>Warm, gently muted, and beautifully grounded. Your best colors echo the soft richness of an early autumn landscape.</p>
-          </div>
-          <button class="button button-light" id="downloadReport">Download report ↓</button>
-        </div>
-        <div class="result-grid">
-          <article class="result-card tone-card">
-            <span class="card-label">Your skin tone chart</span>
-            <div class="face-orbit">
-              <img id="resultPhoto" src="/assets/color-analysis-portrait.png" alt="Analyzed portrait" />
-              <i style="--c:#d89b79;--x:8%;--y:14%"></i><i style="--c:#8e6551;--x:85%;--y:22%"></i><i style="--c:#e7bb99;--x:2%;--y:72%"></i><i style="--c:#5f3b2f;--x:88%;--y:76%"></i>
-            </div>
-            <dl><div><dt>Undertone</dt><dd>Warm neutral</dd></div><div><dt>Contrast</dt><dd>Low–medium</dd></div><div><dt>Depth</dt><dd>Medium</dd></div></dl>
-          </article>
-          <article class="result-card palette-card" id="palette">
-            <span class="card-label">Your signature palette</span>
-            <div class="large-swatches">
-              <span style="--sw:#9b4e4b">Brick rose</span><span style="--sw:#cc765b">Terracotta</span><span style="--sw:#dba976">Camel</span><span style="--sw:#748264">Sage</span><span style="--sw:#426d6a">Deep teal</span><span style="--sw:#72515f">Aubergine</span>
-            </div>
-            <p>Choose blended, earthy shades over anything icy or neon. These colors harmonize with your natural coloring instead of wearing you.</p>
-          </article>
-          <article class="result-card avoid-card">
-            <span class="card-label">Your easy swaps</span>
-            <div class="swap"><span style="--sw:#111827"></span><b>Pure black</b><i>→</i><span style="--sw:#3e3433"></span><b>Espresso</b></div>
-            <div class="swap"><span style="--sw:#f7f7f2"></span><b>Optic white</b><i>→</i><span style="--sw:#e8d8bd"></span><b>Warm ivory</b></div>
-            <div class="swap"><span style="--sw:#ff38bc"></span><b>Hot pink</b><i>→</i><span style="--sw:#a85c66"></span><b>Dusty rose</b></div>
-          </article>
-        </div>
       </section>
 
       <section class="steps-section" id="how-it-works">
@@ -155,11 +102,11 @@
           <div class="dimension"><b>Temperature</b><span>Warm</span><div class="meter"><i style="width:68%"></i></div><span>Cool</span></div>
           <div class="dimension"><b>Depth</b><span>Light</span><div class="meter"><i style="width:54%"></i></div><span>Deep</span></div>
           <div class="dimension"><b>Chroma</b><span>Soft</span><div class="meter"><i style="width:38%"></i></div><span>Bright</span></div>
-          <a href="#analyze" class="text-link">Discover your dimensions <span>→</span></a>
+          <a href="/quiz/" class="text-link">Discover your dimensions <span>→</span></a>
         </div>
       </section>
 
-      <section class="palette-library">
+      <section class="palette-library" id="palette">
         <div class="section-heading centered">
           <div class="eyebrow"><span></span> There is a palette for everyone</div>
           <h2>Explore the <em>12 color seasons.</em></h2>
@@ -220,7 +167,7 @@
         <div>
           <div class="eyebrow light"><span></span> Ready when you are</div>
           <h2>Your best colors have been<br />there all along. <em>Let’s find them.</em></h2>
-          <a class="button button-light" href="#analyze">Start my free analysis <span>→</span></a>
+          <a class="button button-light" href="/quiz/">Start my free analysis <span>→</span></a>
         </div>
         <div class="cta-fan"><i></i><i></i><i></i><i></i><i></i></div>
       </section>
