@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://huekind.com/sitemap.xml
+Sitemap: https://huekind.online/sitemap.xml

@@ -54,13 +54,13 @@ function renderStaticArticle(article) {
 }
 
 for (const article of articles) {
-  const canonical = `https://huekind.com/blog/${article.slug}/`;
+  const canonical = `https://huekind.online/blog/${article.slug}/`;
   const schema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: article.title,
     description: article.metaDescription,
-    image: `https://huekind.com${article.image}`,
+    image: `https://huekind.online${article.image}`,
     datePublished: "2026-06-15",
     dateModified: "2026-06-15",
     author: { "@type": "Organization", name: "HueKind" },
@@ -70,7 +70,7 @@ for (const article of articles) {
   const html = template
     .replace("<title>HueKind Journal</title>", `<title>${article.metaTitle}</title>`)
     .replace('content="Personal color analysis guide from HueKind."', `content="${article.metaDescription}"`)
-    .replace('href="https://huekind.com/blog/"', `href="${canonical}"`)
+    .replace('href="https://huekind.online/blog/"', `href="${canonical}"`)
     .replace('<script id="articleSchema" type="application/ld+json"></script>', `<script id="articleSchema" type="application/ld+json">${schema}</script>`)
     .replace('<main class="article-page" id="articlePage"></main>', `<main class="article-page" id="articlePage">${renderStaticArticle(article)}</main>`);
   const directory = resolve(root, "blog", article.slug);
@@ -80,9 +80,9 @@ for (const article of articles) {
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://huekind.com/</loc><lastmod>2026-06-15</lastmod></url>
-  <url><loc>https://huekind.com/blog/</loc><lastmod>2026-06-15</lastmod></url>
-${articles.map((article) => `  <url><loc>https://huekind.com/blog/${article.slug}/</loc><lastmod>2026-06-15</lastmod></url>`).join("\n")}
+  <url><loc>https://huekind.online/</loc><lastmod>2026-06-15</lastmod></url>
+  <url><loc>https://huekind.online/blog/</loc><lastmod>2026-06-15</lastmod></url>
+${articles.map((article) => `  <url><loc>https://huekind.online/blog/${article.slug}/</loc><lastmod>2026-06-15</lastmod></url>`).join("\n")}
 </urlset>
 `;
 await mkdir(resolve(root, "public"), { recursive: true });

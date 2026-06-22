@@ -37,19 +37,19 @@ function renderArticle() {
 
   document.title = article.metaTitle;
   document.querySelector('meta[name="description"]').content = article.metaDescription;
-  document.querySelector('link[rel="canonical"]').href = `https://huekind.com/blog/${article.slug}/`;
+  document.querySelector('link[rel="canonical"]').href = `https://huekind.online/blog/${article.slug}/`;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: article.title,
     description: article.metaDescription,
-    image: `https://huekind.com${article.image}`,
+    image: `https://huekind.online${article.image}`,
     datePublished: "2026-06-15",
     dateModified: "2026-06-15",
     author: { "@type": "Organization", name: "HueKind" },
     publisher: { "@type": "Organization", name: "HueKind" },
-    mainEntityOfPage: `https://huekind.com/blog/${article.slug}/`
+    mainEntityOfPage: `https://huekind.online/blog/${article.slug}/`
   };
   document.querySelector("#articleSchema").textContent = JSON.stringify(articleJsonLd);
 
